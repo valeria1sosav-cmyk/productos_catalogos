@@ -1,4 +1,11 @@
 "use strict";
+const botonPrueba = document.querySelector("#boton-prueba");
+const mensajePrueba = document.querySelector("#mensaje-prueba");
+if (botonPrueba !== null && mensajePrueba !== null) {
+    botonPrueba.addEventListener("click", () => {
+        mensajePrueba.textContent = "¡La conexión funciona!";
+    });
+}
 let productos = [];
 const formulario = document.getElementById("formProducto");
 const nombre = document.getElementById("nombre");
@@ -13,6 +20,7 @@ const listaProductos = document.getElementById("listaProductos");
 const cantidadProductos = document.getElementById("cantidadProductos");
 const stockTotal = document.getElementById("stockTotal");
 const valorTotal = document.getElementById("valorTotal");
+const cantidadMostrada = document.getElementById("cantidadMostrada");
 formulario.addEventListener("submit", function (evento) {
     evento.preventDefault();
     const nuevoProducto = {
@@ -46,9 +54,11 @@ function mostrarProductos() {
             coincideStock &&
             coincidePrecio;
     });
+    cantidadMostrada.textContent =
+        productosFiltrados.length + " productos";
     if (productosFiltrados.length === 0) {
         listaProductos.innerHTML =
-            `<p class="sin-productos">No hay productos para mostrar.</p>`;
+            `<p class="sin-productos">♡ No hay productos para mostrar ♡</p>`;
         return;
     }
     productosFiltrados.forEach(function (producto) {
@@ -56,23 +66,38 @@ function mostrarProductos() {
         tarjeta.className = "producto";
         tarjeta.innerHTML = `
             <h3>${producto.nombre}</h3>
-            <p><strong>Categoría:</strong> ${producto.categoria}</p>
-            <p><strong>Precio:</strong> $${producto.precio}</p>
-            <p><strong>Stock:</strong> ${producto.stock}</p>
+
+            <p>
+                <strong>Categoría:</strong>
+                ${producto.categoria}
+            </p>
+
+            <p>
+                <strong>Precio:</strong>
+                $${producto.precio}
+            </p>
+
+            <p>
+                <strong>Stock:</strong>
+                ${producto.stock}
+            </p>
         `;
         listaProductos.appendChild(tarjeta);
     });
 }
 function actualizarResumen() {
-    cantidadProductos.textContent = productos.length.toString();
+    cantidadProductos.textContent =
+        productos.length.toString();
     let totalStock = 0;
     let totalValor = 0;
     productos.forEach(function (producto) {
         totalStock += producto.stock;
         totalValor += producto.precio * producto.stock;
     });
-    stockTotal.textContent = totalStock.toString();
-    valorTotal.textContent = "$" + totalValor.toString();
+    stockTotal.textContent =
+        totalStock.toString();
+    valorTotal.textContent =
+        "$" + totalValor.toString();
 }
 buscarNombre.addEventListener("input", mostrarProductos);
 buscarCategoria.addEventListener("change", mostrarProductos);
