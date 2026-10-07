@@ -6,6 +6,12 @@ if (botonPrueba !== null && mensajePrueba !== null) {
         mensajePrueba.textContent = "¡La conexión funciona!";
     });
 }
+const buscador = document.querySelector("#buscarNombre");
+if (buscador !== null && mensajePrueba !== null) {
+    buscador.addEventListener("input", () => {
+        mensajePrueba.textContent = "Estás buscando: " + buscador.value;
+    });
+}
 let productos = [];
 const formulario = document.getElementById("formProducto");
 const nombre = document.getElementById("nombre");
