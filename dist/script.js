@@ -1,0 +1,82 @@
+"use strict";
+let productos = [];
+const formulario = document.getElementById("formProducto");
+const nombre = document.getElementById("nombre");
+const categoria = document.getElementById("categoria");
+const precio = document.getElementById("precio");
+const stock = document.getElementById("stock");
+const buscarNombre = document.getElementById("buscarNombre");
+const buscarCategoria = document.getElementById("buscarCategoria");
+const buscarStock = document.getElementById("buscarStock");
+const precioMaximo = document.getElementById("precioMaximo");
+const listaProductos = document.getElementById("listaProductos");
+const cantidadProductos = document.getElementById("cantidadProductos");
+const stockTotal = document.getElementById("stockTotal");
+const valorTotal = document.getElementById("valorTotal");
+formulario.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    const nuevoProducto = {
+        nombre: nombre.value,
+        categoria: categoria.value,
+        precio: Number(precio.value),
+        stock: Number(stock.value)
+    };
+    productos.push(nuevoProducto);
+    formulario.reset();
+    mostrarProductos();
+    actualizarResumen();
+});
+function mostrarProductos() {
+    listaProductos.innerHTML = "";
+    const nombreBuscado = buscarNombre.value.toLowerCase();
+    const categoriaBuscada = buscarCategoria.value;
+    const stockBuscado = buscarStock.value;
+    const precioMax = Number(precioMaximo.value);
+    const productosFiltrados = productos.filter(function (producto) {
+        const coincideNombre = producto.nombre.toLowerCase().includes(nombreBuscado);
+        const coincideCategoria = categoriaBuscada === "" ||
+            producto.categoria === categoriaBuscada;
+        const coincideStock = stockBuscado === "" ||
+            (stockBuscado === "disponible" && producto.stock > 0) ||
+            (stockBuscado === "agotado" && producto.stock === 0);
+        const coincidePrecio = precioMaximo.value === "" ||
+            producto.precio <= precioMax;
+        return coincideNombre &&
+            coincideCategoria &&
+            coincideStock &&
+            coincidePrecio;
+    });
+    if (productosFiltrados.length === 0) {
+        listaProductos.innerHTML =
+            `<p class="sin-productos">No hay productos para mostrar.</p>`;
+        return;
+    }
+    productosFiltrados.forEach(function (producto) {
+        const tarjeta = document.createElement("div");
+        tarjeta.className = "producto";
+        tarjeta.innerHTML = `
+            <h3>${producto.nombre}</h3>
+            <p><strong>Categoría:</strong> ${producto.categoria}</p>
+            <p><strong>Precio:</strong> $${producto.precio}</p>
+            <p><strong>Stock:</strong> ${producto.stock}</p>
+        `;
+        listaProductos.appendChild(tarjeta);
+    });
+}
+function actualizarResumen() {
+    cantidadProductos.textContent = productos.length.toString();
+    let totalStock = 0;
+    let totalValor = 0;
+    productos.forEach(function (producto) {
+        totalStock += producto.stock;
+        totalValor += producto.precio * producto.stock;
+    });
+    stockTotal.textContent = totalStock.toString();
+    valorTotal.textContent = "$" + totalValor.toString();
+}
+buscarNombre.addEventListener("input", mostrarProductos);
+buscarCategoria.addEventListener("change", mostrarProductos);
+buscarStock.addEventListener("change", mostrarProductos);
+precioMaximo.addEventListener("input", mostrarProductos);
+mostrarProductos();
+actualizarResumen();

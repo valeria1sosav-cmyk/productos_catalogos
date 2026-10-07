@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>♡ My Cute Inventory</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button id="boton-prueba" type="button">Probar conexión</button><p id="mensaje-prueba"></p>
+
+    <div class="barra-superior">
+        ♡ Bienvenido a My Cute Inventory ♡
+    </div>
+
+
+    <header>
+
+        <div class="logo">
+            <span>♡</span>
+            <div>
+                <strong>MY CUTE</strong>
+                <small>INVENTORY</small>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#agregar">Agregar</a>
+            <a href="#buscar">Buscar</a>
+            <a href="#resumen">Resumen</a>
+            <a href="#productos">Productos</a>
+        </nav>
+
+        <div class="icono-carrito">
+            ♡
+        </div>
+
+    </header>
+
+
+    <section class="hero">
+
+        <div class="hero-texto">
+
+            <p class="mini-titulo">WELCOME TO MY LITTLE SHOP</p>
+
+            <h1>
+                Todo tu inventario
+                <span>en un solo lugar ♡</span>
+            </h1>
+
+            <p>
+                Organizá tus productos de una manera simple,
+                linda y ordenada.
+            </p>
+
+            <a href="#productos" class="boton-hero">
+                Ver productos
+            </a>
+
+        </div>
+
+        <div class="hero-decoracion">
+            ♡
+        </div>
+
+    </section>
+
+
+    <main>
+
+        <section class="seccion" id="agregar">
+
+            <div class="titulo">
+
+                <p class="etiqueta">NEW PRODUCT</p>
+
+                <h2>Agregar producto ♡</h2>
+
+                <p>
+                    Sumá un nuevo producto a tu inventario.
+                </p>
+
+            </div>
+
+
+            <form id="formProducto">
+
+                <div class="campo">
+                    <label for="nombre">Nombre</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        placeholder="Ej: Mouse rosa"
+                        required>
+                </div>
+
+
+                <div class="campo">
+                    <label for="categoria">Categoría</label>
+
+                    <select id="categoria" required>
+
+                        <option value="">
+                            Seleccionar categoría
+                        </option>
+
+                        <option value="Tecnología">
+                            Tecnología
+                        </option>
+
+                        <option value="Periféricos">
+                            Periféricos
+                        </option>
+
+                        <option value="Accesorios">
+                            Accesorios
+                        </option>
+
+                        <option value="Otros">
+                            Otros
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+                    <label for="precio">Precio</label>
+
+                    <input
+                        type="number"
+                        id="precio"
+                        min="0"
+                        placeholder="$ 25000"
+                        required>
+
+                </div>
+
+
+                <div class="campo">
+                    <label for="stock">Stock</label>
+
+                    <input
+                        type="number"
+                        id="stock"
+                        min="0"
+                        placeholder="15"
+                        required>
+
+                </div>
+
+
+                <button type="submit">
+                    ♡ Agregar producto
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <section class="seccion" id="buscar">
+
+            <div class="titulo">
+
+                <p class="etiqueta">FIND YOUR ITEM</p>
+
+                <h2>Buscar productos</h2>
+
+                <p>
+                    Utilizá los filtros para encontrar lo que necesitás.
+                </p>
+
+            </div>
+
+
+            <div class="filtros">
+
+                <div class="campo">
+
+                    <label for="buscarNombre">
+                        Nombre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="buscarNombre"
+                        placeholder="Buscar...">
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="buscarCategoria">
+                        Categoría
+                    </label>
+
+                    <select id="buscarCategoria">
+
+                        <option value="">
+                            Todas
+                        </option>
+
+                        <option value="Tecnología">
+                            Tecnología
+                        </option>
+
+                        <option value="Periféricos">
+                            Periféricos
+                        </option>
+
+                        <option value="Accesorios">
+                            Accesorios
+                        </option>
+
+                        <option value="Otros">
+                            Otros
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="buscarStock">
+                        Stock
+                    </label>
+
+                    <select id="buscarStock">
+
+                        <option value="">
+                            Todos
+                        </option>
+
+                        <option value="disponible">
+                            Disponible
+                        </option>
+
+                        <option value="agotado">
+                            Agotado
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="precioMaximo">
+                        Precio máximo
+                    </label>
+
+                    <input
+                        type="number"
+                        id="precioMaximo"
+                        placeholder="$ 50000">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="seccion" id="resumen">
+
+            <div class="titulo">
+
+                <p class="etiqueta">MY COLLECTION</p>
+
+                <h2>Resumen del inventario</h2>
+
+                <p>
+                    Un vistazo rápido a todos tus productos ♡
+                </p>
+
+            </div>
+
+
+            <div class="resumen-contenedor">
+
+                <div class="tarjeta">
+
+                    <span class="tarjeta-icono">
+                        ♡
+                    </span>
+
+                    <div>
+                        <p>Productos</p>
+                        <h3 id="cantidadProductos">0</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="tarjeta">
+
+                    <span class="tarjeta-icono">
+                        ♧
+                    </span>
+
+                    <div>
+                        <p>Stock total</p>
+                        <h3 id="stockTotal">0</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="tarjeta">
+
+                    <span class="tarjeta-icono">
+                        $
+                    </span>
+
+                    <div>
+                        <p>Valor total</p>
+                        <h3 id="valorTotal">$0</h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="seccion" id="productos">
+
+            <div class="titulo-productos">
+
+                <div>
+
+                    <p class="etiqueta">ALL PRODUCTS</p>
+
+                    <h2>Mis productos ♡</h2>
+
+                    <p>
+                        Todos los productos registrados.
+                    </p>
+
+                </div>
+
+                <span id="cantidadMostrada">
+                    0 productos
+                </span>
+
+            </div>
+
+
+            <div id="listaProductos" class="lista-productos"></div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-logo">
+            ♡ MY CUTE INVENTORY ♡
+        </div>
+
+        <p>
+            Made with love ♡
+        </p>
+
+    </footer>
+
+
+    <script type="module" src="/src/script.ts"></script>
+    <script src="src/script.ts" defer></script>
+    <script src="dist/script.js" defer></script>
+
+</body>
+
+</html>
+
+
